@@ -8,11 +8,19 @@ buttons.addEventListener('click', (event) => {
   }
 })
 
-equals.addEventListener('click', sum(display.textContent))
+equals.addEventListener('click', (event) => {
+  if (event.target.textContent === '=') {
+    sum(display.textContent)
+  }
+} )
 
 function sum (input) {
   for (let index = 0; index < input.length; index++) {
-    console.log(input[index])    
+    if (input[index] === '+') {
+      let numberOne = input.substring(0, index)
+      let numberTwo = input.substring(index + 1, input.length)
+      console.log(Number.parseInt(numberOne) + Number.parseInt(numberTwo))
+    }   
   }
 }
 
