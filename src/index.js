@@ -1,11 +1,21 @@
 let display = document.getElementById('display').firstElementChild
-let numbers = document.getElementById('numbers').children
-console.log(numbers)
+let buttons = document.getElementById('buttons')
+let equals = document.getElementById('equals')
 
-for (let index = 0; index < numbers.length; index++) {
-  numbers[index].addEventListener('click', print(numbers[index]))
+buttons.addEventListener('click', (event) => {
+  if (event.target.textContent !== '=') {
+    display.innerText += event.target.textContent
+  }
+})
+
+equals.addEventListener('click', sum(display.textContent))
+
+function sum (input) {
+  for (let index = 0; index < input.length; index++) {
+    console.log(input[index])    
+  }
 }
 
-function print (button) {
-  console.log(button.innerText)
-}
+// for (let index = 0; index < buttons.length; index++) {
+//   buttons[index].addEventListener('click', print(buttons[index]))
+// }
